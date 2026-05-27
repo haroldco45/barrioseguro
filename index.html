@@ -12,7 +12,6 @@
     <link rel="manifest" href="manifest.json">
     
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <style>
@@ -127,6 +126,10 @@
         </button>
     </nav>
 
+    <footer class="bg-white border-t border-gray-200 p-4 text-center text-xs text-gray-400 pb-20">
+        <p>&copy; 2026 Desarrollado bajo Licencia de Derechos de Autor por <strong>VIBRAS POSITIVAS HM</strong></p>
+    </footer>
+
     <script>
         // Inicializar Iconos de Lucide
         lucide.createIcons();
@@ -187,11 +190,11 @@
             const idAleatorio = "TR-" + Math.floor(1000 + Math.random() * 9000);
 
             // Estructura del reporte que se envía de manera segura externa
-            const textoMensaje = `🚨 *ALERTA VECINAL ANÓNIMA*\n\n• *Incidente:* ${tipo}\n• *Ubicación:* ${ubicacion}\n• *Detalles:* ${detalles}\n\n_Reportado de forma segura e identidat protegida desde la PWA del Sector Mall del Triángulo._`;
+            const textoMensaje = `🚨 *ALERTA VECINAL ANÓNIMA*\n\n• *Incidente:* ${tipo}\n• *Ubicación:* ${ubicacion}\n• *Detalles:* ${detalles}\n\n_Reportado de forma segura e identidad protegida desde la PWA del Sector Mall del Triángulo._`;
 
-            // Configuración del Bot puente confidencial hacia el ecosistema del grupo
-            // Reemplaza con tus credenciales seguras del Bot cuando lo desees
-            const TELEGRAM_BOT_TOKEN = '7194820355:AAH_ExampleToken'; 
+            // Configuración del Bot puente real generado con BotFather
+            const TELEGRAM_BOT_TOKEN = '8088062916:AAGmJPEu7D8DGXzTp2k1jS8htCtItixnQCA'; 
+            // Recuerda cambiar este ID temporal por el ID de tu canal/grupo de control definitivo
             const TELEGRAM_CHAT_ID = '-100213456789'; 
 
             fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
@@ -204,7 +207,6 @@
                 })
             })
             .then(() => {
-                // Agregar al historial visual local del dispositivo del vecino
                 alertasLocales.unshift({ id: idAleatorio, tipo: tipo, detalles: detalles, ubicacion: ubicacion });
                 renderAlertas();
                 form.reset();
@@ -212,7 +214,7 @@
             })
             .catch(err => {
                 console.error("Error en pasarela segura", err);
-                // Respaldo local si estás en fase de pruebas offline
+                // Respaldo de contingencia local si no hay red
                 alertasLocales.unshift({ id: idAleatorio, tipo: tipo, detalles: detalles, ubicacion: ubicacion });
                 renderAlertas();
                 form.reset();
