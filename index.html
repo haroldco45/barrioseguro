@@ -182,7 +182,7 @@
             e.preventDefault();
             
             btnEnviar.disabled = true;
-            btnEnviar.innerHTML = '<i class="fa-solid fa-spinner animate-spin"></i> Procesando Alerta Anónima...';
+            btnEnviar.innerHTML = 'Procesando Alerta Anónima...';
 
             const tipo = document.getElementById('tipo-incidente').value;
             const detalles = document.getElementById('detalles-incidente').value;
@@ -194,10 +194,12 @@
 
             // Configuración del Bot puente real generado con BotFather
             const TELEGRAM_BOT_TOKEN = '8088062916:AAGmJPEu7D8DGXzTp2k1jS8htCtItixnQCA'; 
-            // Recuerda cambiar este ID temporal por el ID de tu canal/grupo de control definitivo
             const TELEGRAM_CHAT_ID = '6056194306'; 
 
-            fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+            // URL unificada correctamente para evitar fallos de lectura en el navegador
+            const urlTelegram = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
+
+            fetch(urlTelegram, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -205,6 +207,12 @@
                     text: textoMensaje,
                     parse_mode: 'Markdown'
                 })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Error en la respuesta del servidor de Telegram');
+                }
+                return response.json();
             })
             .then(() => {
                 alertasLocales.unshift({ id: idAleatorio, tipo: tipo, detalles: detalles, ubicacion: ubicacion });
@@ -214,7 +222,7 @@
             })
             .catch(err => {
                 console.error("Error en pasarela segura", err);
-                // Respaldo de contingencia local si no hay red
+                // Respaldo de contingencia local si falla la red o el enlace
                 alertasLocales.unshift({ id: idAleatorio, tipo: tipo, detalles: detalles, ubicacion: ubicacion });
                 renderAlertas();
                 form.reset();
