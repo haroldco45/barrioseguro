@@ -4,15 +4,125 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Barrio Seguro - Innovar TICS</title>
-    <link rel="stylesheet" href="style.css">
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --accent-cyan: #00e6b8;
+            --bg-dark: #050b14;
+        }
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-dark);
+            color: #fff;
+            overflow-x: hidden;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #111;
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+            margin: 0;
+            padding: 0;
+        }
+        .nav-links a {
+            color: #ccc;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+        .nav-links a:hover {
+            color: var(--accent-cyan);
+        }
+        .scroll-section {
+            padding: 80px 5%;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(5, 11, 20, 0.6);
+            z-index: 2;
+        }
+        .bg-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+        .text-cyan { color: var(--accent-cyan); }
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+        .stagger-item {
+            background: rgba(255,255,255,0.03);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid #111;
+            text-align: center;
+        }
+        .icon-container {
+            font-size: 2.5rem;
+            color: var(--accent-cyan);
+            margin-bottom: 15px;
+        }
+        .btn-mega {
+            background: var(--accent-cyan);
+            color: #000;
+            border: none;
+            padding: 15px 35px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 0 15px rgba(0,230,184,0.4);
+            transition: 0.3s;
+        }
+        .btn-mega:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 25px rgba(0,230,184,0.7);
+        }
+        .title-badge {
+            background: rgba(0,230,184,0.1);
+            color: var(--accent-cyan);
+            padding: 6px 15px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+    </style>
 </head>
 <body>
 
     <nav class="navbar">
         <div class="logo-container">
-            <a href="index.html"><img src="assets/Logo.png" alt="Logo Innovar TICS" style="height:45px;"></a>
+            <a href="index.html"><img src="assets/Logo.png" alt="Logo Innovar TICS" style="height:45px; onerror: this.style.display='none'"></a>
         </div>
         <ul class="nav-links">
             <li><a href="index.html#soluciones">Soluciones</a></li>
@@ -22,38 +132,33 @@
         </ul>
     </nav>
 
-    <section class="scroll-section" style="position: relative; overflow: hidden;">
+    <section class="scroll-section">
         <video class="bg-video" autoplay loop muted playsinline>
             <source src="assets/PAGINA 6- SOCIAL CITY/pagina 6, seccion 1, social city.mp4" type="video/mp4">
         </video>
         <div class="overlay"></div>
         
-        <div class="features-container section-reveal" style="display: flex; justify-content: space-between; align-items: center; width: 100%; flex-wrap: wrap; gap: 30px; position: relative; z-index: 10;">
+        <div class="features-container" style="display: flex; justify-content: space-between; align-items: center; width: 100%; flex-wrap: wrap; gap: 30px; position: relative; z-index: 10;">
             <div style="display: flex; flex-direction: column; align-items: flex-start; max-width: 600px; flex: 1;">
                 <div style="display: flex; align-items: center; gap: 20px; margin-bottom: 25px;">
-                    <img src="assets/PAGINA 6- SOCIAL CITY/Artboard 2.png" alt="Social City Icon" style="height: 180px; max-width: 100%; object-fit: contain; filter: drop-shadow(0 0 15px var(--accent-cyan));">
+                    <img src="assets/PAGINA 6- SOCIAL CITY/Artboard 2.png" alt="Social City Icon" style="height: 140px; max-width: 100%; object-fit: contain; filter: drop-shadow(0 0 15px var(--accent-cyan));">
                 </div>
-                
-                <div class="title-badge" style="margin-bottom: 15px;">
-                    COLABORACIÓN Y PARTICIPACIÓN CIUDADANA
-                </div>
-                
-                <p style="text-align: left; font-size: 1.3rem; line-height: 1.5; font-weight: 500; text-shadow: 0 0 10px rgba(0,0,0,0.8);">
+                <div class="title-badge">COLABORACIÓN Y PARTICIPACIÓN CIUDADANA</div>
+                <p style="text-align: left; font-size: 1.3rem; line-height: 1.5; font-weight: 500; text-shadow: 0 0 10px rgba(0,0,0,0.8); margin-top: 15px;">
                     La red de colaboración y participación ciudadana que permite fortalecer la Seguridad, Movilidad y Medio ambiente.
                 </p>
             </div>
-            
             <div id="hero-btn-container" style="flex: 1; display: flex; justify-content: flex-end; min-width: 200px;">
                 <a href="https://wa.me/573117700431" style="text-decoration:none;">
-                    <button class="btn-mega neon-cyan-btn">Solicitar Demo</button>
+                    <button class="btn-mega">Solicitar Demo</button>
                 </a>
             </div>
         </div>
     </section>
 
-    <section class="scroll-section" style="padding: 20px 5%; min-height: auto; background: #050b14;">
-        <div style="max-width: 1000px; margin: 0 auto;">
-            <video style="width: 100%; display: block; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);" controls playsinline preload="metadata">
+    <section style="padding: 40px 5%; background: #02060c; text-align: center;">
+        <div style="max-width: 900px; margin: 0 auto;">
+            <video style="width: 100%; display: block; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);" controls playsinline>
                 <source src="assets/PAGINA 6- SOCIAL CITY/pagina 6, seccion 2, social city.mp4" type="video/mp4">
             </video>
         </div>
@@ -65,232 +170,50 @@
         </video>
         <div class="overlay"></div>
 
-        <div class="features-container section-reveal">
-            <h2 style="font-size: 4rem; text-align: center; margin-bottom: 20px; font-weight: 800;">
+        <div class="features-container" style="position: relative; z-index: 10; width: 100%;">
+            <h2 style="font-size: 3rem; text-align: center; margin-bottom: 20px; font-weight: 800;">
                 ¿Qué es Social <span class="text-cyan">City?</span>
             </h2>
-            
-            <p style="text-align: center; font-size: 1.3rem; line-height: 1.5; font-weight: 500; margin: 0 auto 60px; max-width: 900px; text-shadow: 0 0 15px rgba(0,0,0,0.8);">
+            <p style="text-align: center; font-size: 1.2rem; line-height: 1.5; margin: 0 auto 40px; max-width: 800px; text-shadow: 0 0 15px rgba(0,0,0,0.8); color: #ddd;">
                 Es una <strong>aplicación de colaboración y participación ciudadana</strong> que permite realizar cualquier reporte de ciudad, enfocado en blindar y proteger la Seguridad, Movilidad y el Medio ambiente de la comunidad.
             </p>
 
             <div class="grid-3">
                 <div class="stagger-item">
                     <div class="icon-container"><i class="fa-solid fa-user-shield"></i></div>
-                    <h3 style="font-size: 1.8rem; font-weight: 800; margin-bottom: 10px;">Seguridad</h3>
+                    <h3 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 10px;">Seguridad</h3>
                     <p style="font-size: 0.95rem; line-height: 1.4; color: #ccc;">Herramienta de respuesta inmediata y alertas silenciosas ante emergencias.</p>
                 </div>
                 <div class="stagger-item">
                     <div class="icon-container"><i class="fa-solid fa-map-location-dot"></i></div>
-                    <h3 style="font-size: 1.8rem; font-weight: 800; margin-bottom: 10px;">Movilidad</h3>
+                    <h3 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 10px;">Movilidad</h3>
                     <p style="font-size: 0.95rem; line-height: 1.4; color: #ccc;">Ayuda activa, carros mal parqueados y reporte ágil de incidentes de tránsito.</p>
                 </div>
                 <div class="stagger-item">
                     <div class="icon-container"><i class="fa-solid fa-leaf"></i></div>
-                    <h3 style="font-size: 1.8rem; font-weight: 800; margin-bottom: 10px;">Medio Ambiente</h3>
+                    <h3 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 10px;">Medio Ambiente</h3>
                     <p style="font-size: 0.95rem; line-height: 1.4; color: #ccc;">Reporte de incidencias, basuras y daños para el cuidado del entorno vecinal.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="scroll-section">
-        <video class="bg-video" autoplay loop muted playsinline>
-            <source src="assets/PAGINA 6- SOCIAL CITY/pagina 6, seccion 4, social city.mp4" type="video/mp4">
-        </video>
-        <div class="overlay"></div>
-
-        <div class="features-container section-reveal" style="max-width: 1400px; padding: 0 40px;">
-            <div class="mockup-layout" style="display: flex; align-items: center; justify-content: center; gap: 40px; flex-wrap: wrap;">
-                <div class="stagger-item" style="flex: 1; min-width: 280px; text-align: center; display: flex; align-items: center; justify-content: center; overflow: hidden;">
-                    <img src="assets/PAGINA 6- SOCIAL CITY/pagina 6, mockup seccion 4, social city.png" alt="App Mockup" class="mockup-image" style="max-width: 100%; height: auto; transform: scale(1.05); transition: transform 0.3s ease; filter: drop-shadow(0 0 25px rgba(0,230,184,0.35));">
-                </div>
-                <div class="stagger-item" style="flex: 1; min-width: 300px; text-align: left;">
-                    <h2 style="font-size: 3.5rem; line-height: 1.1; margin-bottom: 20px; font-weight: 800;">
-                        <span class="text-cyan">Herramientas</span> de<br>Seguridad y Emergencia
-                    </h2>
-                    <p style="font-size: 1.2rem; font-weight: 500; text-shadow: 0 0 10px rgba(0,0,0,0.8); margin-bottom: 30px;">
-                        La aplicación funciona de forma integrada como un centro de prevención y reacción personal con funciones especializadas:
-                    </p>
-                    <ul class="custom-list" style="list-style: none; padding: 0;">
-                        <li style="margin-bottom: 15px;">
-                            <strong style="color:var(--accent-cyan);"><i class="fa-solid fa-circle-exclamation" style="margin-right: 8px;"></i>Botón SOS / Pánico:</strong> Acceso instantáneo para reportar robos, riñas o extorsiones sin poner en riesgo tu integridad.
-                        </li>
-                        <li style="margin-bottom: 15px;">
-                            <strong style="color:var(--accent-cyan);"><i class="fa-solid fa-user-lock" style="margin-right: 8px;"></i>Asistencia en Desplazamiento ("En Camino"):</strong> Escolta Virtual integrado. El usuario define un tiempo estimado; si no confirma el arribo, se emite automáticamente una alerta de seguridad al grupo vecinal.
-                        </li>
-                        <li style="margin-bottom: 15px;">
-                            <strong style="color:var(--accent-cyan);"><i class="fa-solid fa-camera" style="margin-right: 8px;"></i>Reporte de Incidentes de Convivencia:</strong> Adjunta evidencias multimedia clave del sector:
-                            <ul style="margin-left: 20px; margin-top: 5px; color: #ccc; list-style-type: square;">
-                                <li>Fotografías y material de video en tiempo real.</li>
-                                <li>Notas de audio directas y descripciones de texto.</li>
-                                <li>Ubicación georeferenciada en el mapa del barrio.</li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="scroll-section">
-        <video class="bg-video" autoplay loop muted playsinline>
-            <source src="assets/PAGINA 6- SOCIAL CITY/pagina 6, seccion 5, social city.mp4" type="video/mp4">
-        </video>
-        <div class="overlay"></div>
-
-        <div class="features-container section-reveal">
-            <h2 style="font-size: 4.5rem; line-height: 1.1; text-align: left; margin-bottom: 60px; font-weight: 800;">
-                Funciones de<br>Conectividad y<br><span class="text-cyan">Comunidad</span>
-            </h2>
-            
-            <div class="grid-3" style="align-items: flex-start; gap: 40px;">
-                <div class="stagger-item">
-                    <div class="icon-container"><i class="fa-solid fa-location-dot"></i></div>
-                    <h3 style="font-size: 1.8rem; font-weight: 800; margin-bottom: 15px;">Estoy Aquí</h3>
-                    <p style="font-size: 0.95rem; line-height: 1.5; color: #ddd;">Reporta con un solo toque tu posición en tiempo real a los administradores de la red del frente de seguridad vecinal.</p>
-                </div>
-                <div class="stagger-item">
-                    <div class="icon-container"><i class="fa-solid fa-users"></i></div>
-                    <h3 style="font-size: 1.8rem; font-weight: 800; margin-bottom: 15px;">Mi Grupo</h3>
-                    <p style="font-size: 0.95rem; line-height: 1.5; color: #ddd;">Coordina un comando de seguridad familiar o de cuadra, gestionando alertas compartidas de forma interna y 100% anónima para evitar retaliaciones.</p>
-                </div>
-                <div class="stagger-item">
-                    <div class="icon-container"><i class="fa-solid fa-globe"></i></div>
-                    <h3 style="font-size: 1.8rem; font-weight: 800; margin-bottom: 15px;">Geocercas</h3>
-                    <p style="font-size: 0.95rem; line-height: 1.5; color: #ddd;">Zonas perimetrales controladas en el mapa. El sistema genera notificaciones de seguridad si un dispositivo ingresa o sale del sector protegido.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="scroll-section">
-        <video class="bg-video" autoplay loop muted playsinline>
-            <source src="assets/PAGINA 6- SOCIAL CITY/pagina 6, seccion 6, social city.mp4" type="video/mp4">
-        </video>
-        <div class="overlay"></div>
-
-        <div class="features-container section-reveal" style="max-width: 1400px; text-align: center;">
-            <h2 style="font-size: 3.5rem; margin-bottom: 20px; font-weight: 800;">
-                Gestión para Municipios y Organismos Públicos
-            </h2>
-            <div class="title-badge" style="margin-bottom: 50px; font-weight: 600;">
-                SocialCity ofrece herramientas avanzadas para la administración gubernamental y frentes comunitarios:
-            </div>
-            
-            <div class="municipio-wrapper stagger-item" style="width: 100%;">
-                <div class="m-desktop">
-                    <img src="assets/PAGINA 6- SOCIAL CITY/pagina 6, mockup seccion 6, social city.png" alt="Dashboards Mockup" style="max-width: 100%; height: auto; display: block; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.8)); margin: 0 auto;">
-                    
-                    <div class="grid-4" style="text-align: center; gap: 20px; margin-top: -15%; position: relative; z-index: 5; padding: 0 5%;">
-                        <div class="bg-blur-card" style="padding: 15px; background: rgba(5,11,20,0.75); border-radius: 8px; border: 1px solid #222;">
-                            <h4 style="font-size: 1.3rem; font-weight: 800; margin-bottom: 8px;">Web Manager<br>(Tablero de Control)</h4>
-                            <p style="font-size: 0.95rem; color: #ccc;">Gestión integral de incidencias reportadas en el barrio en tiempo real.</p>
-                        </div>
-                        <div class="bg-blur-card" style="padding: 15px; background: rgba(5,11,20,0.75); border-radius: 8px; border: 1px solid #222;">
-                            <h4 style="font-size: 1.3rem; font-weight: 800; margin-bottom: 8px;">Mapa del Delito<br>(MapGuard)</h4>
-                            <p style="font-size: 0.95rem; color: #ccc;">Análisis geoespacial automatizado de zonas y esquinas críticas de atención.</p>
-                        </div>
-                        <div class="bg-blur-card" style="padding: 15px; background: rgba(5,11,20,0.75); border-radius: 8px; border: 1px solid #222;">
-                            <h4 style="font-size: 1.3rem; font-weight: 800; margin-bottom: 8px;">Ubicación de<br>Recursos</h4>
-                            <p style="font-size: 0.95rem; color: #ccc;">Monitoreo por mapa de patrullas del cuadrante, ambulancias o guardas.</p>
-                        </div>
-                        <div class="bg-blur-card" style="padding: 15px; background: rgba(5,11,20,0.75); border-radius: 8px; border: 1px solid #222;">
-                            <h4 style="font-size: 1.3rem; font-weight: 800; margin-bottom: 8px;">Mensajes Masivos<br>y Encuestas</h4>
-                            <p style="font-size: 0.95rem; color: #ccc;">Comunicación directa e interactiva de avisos de interés de convivencia.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="m-mobile" style="display: none;">
-                    <div class="m-card">
-                        <img src="assets/PAGINA 6- SOCIAL CITY/m1_web_manager.png" alt="Web Manager" class="m-img-native">
-                        <h4 style="font-size: 1.4rem; font-weight: 800; margin-bottom: 8px; color: #fff;">Web Manager</h4>
-                        <p style="font-size: 0.95rem; color: #ccc;">Panel integral para centralizar todos los reportes comunitarios recibidos.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="scroll-section">
-        <video class="bg-video" autoplay loop muted playsinline>
-            <source src="assets/PAGINA 6- SOCIAL CITY/pagina 6, seccion 7, social city.mp4" type="video/mp4">
-        </video>
-        <div class="overlay"></div>
-
-        <div class="features-container section-reveal" style="display: flex; flex-direction: column; justify-content: space-between; min-height: 70vh;">
-            <h2 style="font-size: 4rem; text-align: left; line-height: 1.1; font-weight: 800;">
-                Integración Tecnológica<br><span class="text-cyan">Avanzada</span>
-            </h2>
-            
-            <div class="grid-4" style="margin-top: auto; padding-top: 30px;">
-                <div class="stagger-item">
-                    <div class="icon-container" style="font-size: 3.5rem;"><i class="fa-solid fa-street-view"></i></div>
-                    <h3 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 10px;">Seguimiento<br>(Tracking)</h3>
-                    <p style="font-size: 0.9rem; line-height: 1.3; color: #ccc;">Monitoreo preciso de flotas y cuadrantes vía App en segundo plano.</p>
-                </div>
-                <div class="stagger-item">
-                    <div class="icon-container" style="font-size: 3.5rem;"><i class="fa-solid fa-video"></i></div>
-                    <h3 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 10px;">Mis Cámaras</h3>
-                    <p style="font-size: 0.9rem; line-height: 1.3; color: #ccc;">Interconexión directa de cámaras vecinales de andenes y fachadas (RTSP/HLS).</p>
-                </div>
-                <div class="stagger-item">
-                    <div class="icon-container" style="font-size: 3.5rem;"><i class="fa-solid fa-car"></i></div>
-                    <h3 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 10px;">Mis Móviles</h3>
-                    <p style="font-size: 0.9rem; line-height: 1.3; color: #ccc;">Revisión inmediata de posición y recorridos históricos en el mapa.</p>
-                </div>
-                <div class="stagger-item">
-                    <div class="icon-container" style="font-size: 3.5rem;"><i class="fa-solid fa-user-check"></i></div>
-                    <h3 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 10px;">Mis Cuentas</h3>
-                    <p style="font-size: 0.9rem; line-height: 1.3; color: #ccc;">Acceso unificado a bitácoras, reportes confidenciales y soporte vecinal.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <script>
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if(entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    const staggers = entry.target.querySelectorAll('.stagger-item');
-                    staggers.forEach((el, index) => {
-                        setTimeout(() => el.classList.add('visible'), index * 150);
-                    });
-                    if(entry.target.classList.contains('stagger-item')) {
-                        entry.target.classList.add('visible');
-                    }
-                }
-            });
-        }, { threshold: 0.15 });
-
-        document.querySelectorAll('.section-reveal, .stagger-item').forEach(el => observer.observe(el));
-    </script>
-
-    <footer style="background: #000; padding: 60px 5%; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #333; flex-wrap: wrap; gap: 40px; position: relative; z-index: 10;">
+    <footer style="background: #000; padding: 60px 5%; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #222; flex-wrap: wrap; gap: 40px; position: relative; z-index: 10;">
         <div style="flex: 1; min-width: 300px; text-align: center; display: flex; flex-direction: column; align-items: center;">
-            <img src="assets/Logo.png" alt="Innovar TICS" style="height: 60px; margin-bottom: 20px;">
-            <p style="font-size: 0.95rem; line-height: 1.4; color: #ccc; margin-bottom: 20px; max-width: 300px;">
+            <img src="assets/Logo.png" alt="Innovar TICS" style="height: 50px; margin-bottom: 20px; onerror: this.style.display='none'">
+            <p style="font-size: 0.9rem; line-height: 1.4; color: #ccc; max-width: 300px;">
                 Síguenos en todas nuestras redes sociales y descubre lo que tenemos especialmente para ti.
             </p>
-            <div style="display: flex; gap: 20px; justify-content: center;">
-                <a href="https://www.instagram.com/innovartics?igsh=MWlkbjAyZXozb3dvMg%3D%3D" style="color: #fff; font-size: 2.5rem; transition: 0.3s; text-decoration: none;"><i class="fa-brands fa-instagram"></i></a>
-            </div>
         </div>
         <div style="flex: 1; min-width: 300px; text-align: center;">
-            <h3 style="font-size: 1.8rem; font-weight: 800; margin-bottom: 15px;">Contáctanos</h3>
-            <p style="font-size: 1rem; color: #00d28f; font-weight: 500; margin-bottom: 5px;">¿Necesitas ayuda? Llámanos</p>
-            <h2 style="font-size: 2rem; font-weight: 800; margin: 0;">(+57) 312 205 8374</h2>
-        </div>
-        <div style="flex: 1; min-width: 300px; text-align: center; display: flex; justify-content: center; align-items: center;">
-            <a href="https://wa.me/573122058374" style="background: #00d28f; color: #000; padding: 15px 40px; border-radius: 50px; font-weight: 800; font-size: 1.5rem; text-decoration: none; text-transform: uppercase; box-shadow: 0 0 20px rgba(0,210,143,0.4); transition: 0.3s; display: inline-block;">SOLICITAR DEMO</a>
+            <h3 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 10px;">Contáctanos</h3>
+            <h2 style="font-size: 1.8rem; font-weight: 800; color: var(--accent-cyan); margin: 0;">(+57) 312 205 8374</h2>
         </div>
         
-        <div style="width: 100%; text-align: center; margin-top: 20px; padding-top: 20px; border-top: 1px solid #222;">
-            <p style="color: #666; font-size: 0.9rem; margin: 0; letter-spacing: 1px;">
-                &copy; 2026 Producido y Desarrollado bajo Licencia de Derechos de Autor por 
-                <span style="font-weight: 800; color: #00d28f;">VIBRAS POSITIVAS HM</span>
+        <div style="width: 100%; text-align: center; margin-top: 20px; padding-top: 20px; border-top: 1px solid #111;">
+            <p style="color: #555; font-size: 0.85rem; margin: 0; letter-spacing: 1px;">
+                &copy; 2026 Desarrollado bajo Licencia de Derechos de Autor por 
+                <span style="font-weight: 800; color: var(--accent-cyan);">VIBRAS POSITIVAS HM</span>
             </p>
         </div>
     </footer>
