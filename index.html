@@ -196,9 +196,9 @@
                                  "• Detalles: " + detalles + "\n\n" +
                                  "Reportado de forma segura e identidad protegida desde la PWA del Sector Mall del Triángulo.";
 
-            // Configuración real e ID personal de usuario validado
+            // Credenciales de acceso oficiales del Bot y Chat ID personal verificado
             const TELEGRAM_BOT_TOKEN = '8088062916:AAGmJPEu7D8DGXzTp2k1jS8htCtItixnQCA'; 
-            const TELEGRAM_CHAT_ID = '1650395729'; 
+            const TELEGRAM_CHAT_ID = '6056194306'; 
 
             const urlTelegram = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
 
@@ -224,7 +224,7 @@
             })
             .catch(err => {
                 console.error("Error en pasarela segura:", err);
-                // Respaldo de contingencia visual local si falla la red
+                // Respaldo de contingencia visual local si falla el canal de red por caché vieja
                 alertasLocales.unshift({ id: idAleatorio, tipo: tipo, detalles: detalles, ubicacion: ubicacion });
                 renderAlertas();
                 form.reset();
