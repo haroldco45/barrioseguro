@@ -1,10 +1,9 @@
 const CACHE_NAME = 'alerta-vecinal-v1';
 
-// Recursos locales indispensables para que la PWA funcione offline de forma óptima
+// Recursos locales indispensables reales (Eliminado el style.css que no existe)
 const assets = [
   './',
   './index.html',
-  './style.css',
   './manifest.json',
   './sw.js'
 ];
@@ -35,15 +34,20 @@ self.addEventListener('activate', e => {
   );
 });
 
-// Evento Fetch: Estrategia Cache-First (Responde desde caché; si no existe, va a la red)
+// Evento Fetch: Estrategia de Red Primero para las peticiones de Telegram, Cache-First para el resto
 self.addEventListener('fetch', e => {
+  // Si la petición va dirigida a la API de Telegram, la dejamos pasar directo a la red sin tocar la caché
+  if (e.request.url.includes('api.telegram.org')) {
+    e.respondWith(fetch(e.request));
+    return;
+  }
+
   e.respondWith(
     caches.match(e.request).then(cachedResponse => {
       if (cachedResponse) {
         return cachedResponse;
       }
       return fetch(e.request).catch(() => {
-        // Opcional: Aquí podrías retornar una página offline genérica si falla la red
         console.error('Recurso no encontrado en red ni en caché:', e.request.url);
       });
     })
